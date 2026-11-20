@@ -1,6 +1,6 @@
 {
-  "projects": { "default": "unbarber-ar" },
+  "projects": { "default": "lina-back" },
   "targets": {
-    "unbarber-ar": { "hosting": { "landing": ["unbarber-landing"] } }
+    "lina-back": { "hosting": { "landing": ["unbarber-landing"] } }
   }
 }

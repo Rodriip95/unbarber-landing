@@ -73,7 +73,7 @@ Sin las variables de Firebase la página funciona igual: los formularios se simu
 
 ## Firebase: un solo panel
 
-Landing y app comparten el proyecto `unbarber-ar` (id a confirmar cuando se cree):
+Landing y app comparten el proyecto `lina-back`:
 
 | Pieza | Quién la administra |
 |---|---|
