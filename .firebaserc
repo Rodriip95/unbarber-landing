@@ -1,0 +1,6 @@
+{
+  "projects": { "default": "unbarber-ar" },
+  "targets": {
+    "unbarber-ar": { "hosting": { "landing": ["unbarber-landing"] } }
+  }
+}

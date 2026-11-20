@@ -1,26 +1,59 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Tokens de la V2 "Poste" (docs/specs/03-diseno.md). No usar colores sueltos. */
+@theme {
+  --color-white: #ffffff;
+  --color-ink: #111111;
+  --color-red: #e0262b;
+  --color-blue: #1f49c7;
+  --color-red-soft: #fde7e7;
+  --color-blue-soft: #e6ecfb;
+  --color-gray: #f2f2f2;
+  --color-gray-text: #555555;
+
+  --font-display: var(--font-archivo-black), "Arial Black", sans-serif;
+  --font-sans: var(--font-space-grotesk), system-ui, sans-serif;
+
+  --radius-*: initial;
+  --shadow-hard: 4px 4px 0 0 #111111;
+  --shadow-hard-sm: 2px 2px 0 0 #111111;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    border-radius: 0;
+  }
+  html {
+    color-scheme: light;
+  }
+  body {
+    background: var(--color-white);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Franja del poste: firma de la marca, solo como separador o en el logo. */
+.poste {
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--color-red) 0 12px,
+    var(--color-white) 12px 24px,
+    var(--color-blue) 24px 36px,
+    var(--color-white) 36px 48px
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
 }

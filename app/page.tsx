@@ -1,103 +1,77 @@
-import Image from "next/image";
+import { Header } from "@/components/Header";
+import { Section } from "@/components/Section";
+import { Tag } from "@/components/Tag";
+import { ModeCard } from "@/components/ModeCard";
+import { FeatureList } from "@/components/FeatureList";
+import { FAQ } from "@/components/FAQ";
+import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
+import { ClientesCta } from "@/components/RegistroLink";
+import { StickyCta } from "@/components/StickyCta";
+import { WaitlistForm } from "@/components/WaitlistForm";
+import { ButtonLink } from "@/components/Button";
+import { config } from "@/lib/config";
+import { clientes as c } from "@/content/clientes";
 
-export default function Home() {
+export default function ClientesPage() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      <Header link={{ href: "/barberos", label: "¿Sos barbero?" }} />
+      <main>
+        <section className="bg-white">
+          <div className="mx-auto grid max-w-[1200px] items-center gap-10 px-4 py-10 md:grid-cols-[1.3fr_1fr] md:py-20">
+            <div>
+              <Tag>✂️ {config.zonaPiloto}</Tag>
+              <h1 className="mt-5 font-display text-[40px] uppercase leading-[0.95] md:text-[80px]">{c.hero.title}</h1>
+              <p className="mt-5 max-w-xl text-lg font-medium md:text-[22px]">{c.hero.subtitle}</p>
+              <div className="mt-8 flex flex-col gap-4 md:flex-row md:items-center">
+                <ClientesCta ubicacion="hero" className="w-full md:w-auto" />
+                <ButtonLink href="/barberos" variant="secondary">
+                  ¿Sos barbero?
+                </ButtonLink>
+              </div>
+            </div>
+            <PhotoPlaceholder label="Foto de un corte en una barbería de la zona · pendiente" className="aspect-[4/5] w-full" />
+          </div>
+        </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+        <Section title="Dos formas de usarla" bg="blue">
+          <div className="grid gap-6 md:grid-cols-2">
+            {c.modos.map((m) => (
+              <ModeCard key={m.title} {...m} />
+            ))}
+          </div>
+        </Section>
+
+        <Section title="Por qué confiar">
+          <FeatureList items={c.confianza} />
+        </Section>
+
+        <Section id="zona" title="Dónde estamos" bg="gray">
+          <div className="grid gap-8 md:grid-cols-2">
+            <div className="space-y-4">
+              <p className="text-lg">{c.zonaTexto}</p>
+              <PhotoPlaceholder label={`Mapa de ${config.zonaPiloto} · pendiente`} className="aspect-video w-full" />
+            </div>
+            <WaitlistForm />
+          </div>
+        </Section>
+
+        <Section id="faq" title="Preguntas frecuentes">
+          <FAQ items={c.faq} />
+        </Section>
+
+        <section className="border-t-2 border-ink bg-blue text-white">
+          <div className="mx-auto max-w-[1200px] px-4 py-16 md:py-24">
+            <h2 className="font-display text-[32px] uppercase leading-none md:text-6xl">{c.cierre}</h2>
+            <div className="mt-8 [&>a]:bg-white! [&>a]:text-ink!">
+              <ClientesCta ubicacion="cierre" />
+            </div>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      <StickyCta>
+        <ClientesCta ubicacion="barra_fija" />
+      </StickyCta>
+    </>
   );
 }

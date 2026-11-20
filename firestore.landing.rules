@@ -1,0 +1,55 @@
+// Reglas de las colecciones que escribe la landing.
+// Este archivo NO se despliega desde este repo: el firestore.rules del proyecto
+// lo administra el repo de la app. Copiar estos bloques dentro de
+// `match /databases/{database}/documents { ... }`.
+
+function utmValida(u) {
+  return u is map
+    && u.keys().hasOnly(['source', 'medium', 'campaign'])
+    && (!('source' in u) || (u.source is string && u.source.size() <= 100))
+    && (!('medium' in u) || (u.medium is string && u.medium.size() <= 100))
+    && (!('campaign' in u) || (u.campaign is string && u.campaign.size() <= 100));
+}
+
+function texto(v, max) {
+  return v is string && v.size() > 0 && v.size() <= max;
+}
+
+match /lista_espera/{id} {
+  allow create: if request.resource.data.keys().hasOnly(
+        ['contacto', 'tipo_contacto', 'barrio', 'consentimiento', 'version_privacidad', 'utm', 'creado'])
+    && texto(request.resource.data.contacto, 100)
+    && request.resource.data.tipo_contacto in ['email', 'whatsapp']
+    && texto(request.resource.data.barrio, 60)
+    && request.resource.data.consentimiento == true
+    && texto(request.resource.data.version_privacidad, 20)
+    && utmValida(request.resource.data.utm)
+    && request.resource.data.creado == request.time;
+  allow read, update, delete: if request.auth != null && request.auth.token.admin == true;
+}
+
+match /preregistros_barberos/{id} {
+  allow create: if request.resource.data.keys().hasOnly(
+        ['nombre', 'whatsapp', 'barrio', 'instagram', 'acepta_terminos', 'version_terminos', 'utm', 'creado'])
+    && texto(request.resource.data.nombre, 80)
+    && texto(request.resource.data.whatsapp, 30)
+    && texto(request.resource.data.barrio, 60)
+    && (!('instagram' in request.resource.data) || texto(request.resource.data.instagram, 60))
+    && request.resource.data.acepta_terminos == true
+    && texto(request.resource.data.version_terminos, 20)
+    && utmValida(request.resource.data.utm)
+    && request.resource.data.creado == request.time;
+  allow read, update, delete: if request.auth != null && request.auth.token.admin == true;
+}
+
+match /arrepentimientos/{id} {
+  allow create: if request.resource.data.keys().hasOnly(
+        ['codigo', 'nombre', 'contacto', 'fecha_pago', 'detalle', 'creado'])
+    && texto(request.resource.data.codigo, 20)
+    && texto(request.resource.data.nombre, 80)
+    && texto(request.resource.data.contacto, 100)
+    && texto(request.resource.data.fecha_pago, 10)
+    && (!('detalle' in request.resource.data) || (request.resource.data.detalle is string && request.resource.data.detalle.size() <= 500))
+    && request.resource.data.creado == request.time;
+  allow read, update, delete: if request.auth != null && request.auth.token.admin == true;
+}
