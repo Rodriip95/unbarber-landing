@@ -12,7 +12,7 @@
 | Datos | Firestore (lista de espera y pre-registros), escritura desde el navegador | Gratis dentro de la cuota; no hace falta Cloud Functions |
 | Protección | Reglas de Firestore + App Check (reCAPTCHA Enterprise o v3) | Evitar spam en los formularios |
 | Analítica | GA4 (Firebase Analytics) + píxel de Meta | Medir campañas (LAN-05, MKT-04) |
-| Fuentes | `next/font/google` | Se sirven desde el propio dominio |
+| Fuentes | `next/font/local` + `@fontsource` | Se sirven desde el propio dominio y el build no depende de Google Fonts |
 | Precio y promo | Remote Config del proyecto compartido (`membership_price_ars`, `membership_promo_percent`, `membership_promo_until`), con valores por defecto en `.env` | Cambiar la promo sin publicar de nuevo |
 
 ## Estructura del código
