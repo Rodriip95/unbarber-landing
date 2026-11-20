@@ -8,9 +8,14 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
-    "deploy": "npm run build && firebase deploy --only hosting:landing"
+    "env:desa": "node scripts/firebase-env.mjs desa",
+    "env:prd": "node scripts/firebase-env.mjs prd",
+    "deploy:desa": "npm run env:desa && npm run build && firebase deploy --only hosting:landing --project desa",
+    "deploy:prd": "npm run env:prd && npm run build && firebase deploy --only hosting:landing --project prd"
   },
   "dependencies": {
+    "@fontsource/archivo-black": "^5.3.0",
+    "@fontsource/space-grotesk": "^5.3.0",
     "firebase": "^11.10.0",
     "next": "15.5.4",
     "react": "19.1.0",

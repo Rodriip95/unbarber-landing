@@ -43,7 +43,7 @@ Contraste comprobado: blanco sobre rojo 4,7:1 y sobre azul 7,4:1. El texto blanc
 | Etiqueta | Space Grotesk 700, mayúsculas, espaciado 0,08em, en recuadro con borde | 12 → 14 px |
 | Botón principal | Archivo Black, mayúsculas | 18 px, alto 56 px |
 
-Las dos fuentes se cargan con `next/font/google` (se sirven desde el mismo dominio, sin pedido a Google en el navegador del usuario).
+Las dos fuentes se sirven desde el propio sitio con `next/font/local` y los paquetes `@fontsource` (sin pedidos a Google, ni en el build ni en el navegador).
 
 ## Componentes
 

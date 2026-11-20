@@ -1,0 +1,49 @@
+name: Vista previa (desa)
+
+# Cada PR a develop publica un canal de vista previa en el sitio de la landing de desa.
+on:
+  pull_request:
+    branches: [develop]
+
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+
+jobs:
+  preview:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    environment: desa
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+      - run: node scripts/firebase-env.mjs desa
+        env:
+          FIREBASE_WEB_APP_ID: ${{ vars.FIREBASE_WEB_APP_ID }}
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_SITE_URL: ${{ vars.SITE_URL }}
+          NEXT_PUBLIC_APP_URL: ${{ vars.APP_URL }}
+          NEXT_PUBLIC_REGISTRO_MODE: ${{ vars.REGISTRO_MODE }}
+          NEXT_PUBLIC_CLIENTES_MODE: ${{ vars.CLIENTES_MODE }}
+          NEXT_PUBLIC_ZONAS_ABIERTAS: ${{ vars.ZONAS_ABIERTAS }}
+          NEXT_PUBLIC_ZONA_PILOTO: ${{ vars.ZONA_PILOTO }}
+          NEXT_PUBLIC_TITULAR: ${{ vars.TITULAR }}
+          NEXT_PUBLIC_CUIT: ${{ vars.CUIT }}
+          NEXT_PUBLIC_RECAPTCHA_KEY: ${{ vars.RECAPTCHA_KEY }}
+          NEXT_PUBLIC_META_PIXEL_ID: ${{ vars.META_PIXEL_ID }}
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: desa
+          target: landing
+          expires: 7d

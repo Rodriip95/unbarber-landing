@@ -12,7 +12,7 @@
 | Datos | Firestore (lista de espera y pre-registros), escritura desde el navegador | Gratis dentro de la cuota; no hace falta Cloud Functions |
 | Protección | Reglas de Firestore + App Check (reCAPTCHA Enterprise o v3) | Evitar spam en los formularios |
 | Analítica | GA4 (Firebase Analytics) + píxel de Meta | Medir campañas (LAN-05, MKT-04) |
-| Fuentes | `next/font/google` | Se sirven desde el propio dominio |
+| Fuentes | `next/font/local` + `@fontsource` | Se sirven desde el propio dominio y el build no depende de Google Fonts |
 | Precio y promo | Remote Config del proyecto compartido (`membership_price_ars`, `membership_promo_percent`, `membership_promo_until`), con valores por defecto en `.env` | Cambiar la promo sin publicar de nuevo |
 
 ## Estructura del código
@@ -134,6 +134,8 @@ Los UTM de la URL se guardan en `sessionStorage` y se pasan a la app en el link 
 - JS mínimo: los formularios y el aviso de cookies son los únicos componentes de cliente.
 
 ## Deploy
+
+Ambientes `desa` y `prd`, workflows y secretos: ver [../infra.md](../infra.md). Lo de abajo aplica a los dos.
 
 - `firebase.json` con `hosting.target = "landing"`, `public: "out"`, `cleanUrls: true`, cabeceras de caché largas para `/_next/static/**`.
 - Dominios: `unbarber.com.ar` y `www` (redirige a sin www) apuntando al sitio `landing`. `app.unbarber.com.ar` apunta al sitio de la app.

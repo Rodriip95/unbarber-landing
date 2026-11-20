@@ -54,6 +54,7 @@ En la landing, `/barberos` se pinta del lado rojo y `/` del lado azul, igual que
 | [docs/specs/04-tecnica.md](docs/specs/04-tecnica.md) | Arquitectura, estructura del código, datos, analítica, SEO y deploy |
 | [docs/specs/05-legal.md](docs/specs/05-legal.md) | Membresía informada, Términos, Privacidad, arrepentimiento y cookies |
 | [TASKS.md](TASKS.md) | Tareas por fase, con IDs `LAN-xx` y criterio de terminado |
+| [docs/infra.md](docs/infra.md) | Ambientes desa/prd, workflows y secretos |
 | `firestore.landing.rules` | Reglas de las colecciones de la landing, para sumar a las de la app |
 
 Fuentes de verdad: el [documento maestro](https://claude.ai/artifact/3Eh5NFbbXimfRb5U681k55) (pestañas Landing, Diseño, Marketing, Negocio y Decisiones técnicas) y la [propuesta de diseño](https://claude.ai/artifact/UJRTduMd8tdekdXRPW1jTW) (página V2 · Poste). Si algo de acá contradice al documento maestro, gana el documento maestro y se actualiza este repo.
@@ -61,29 +62,21 @@ Fuentes de verdad: el [documento maestro](https://claude.ai/artifact/3Eh5NFbbXim
 ## Cómo correrlo
 
 ```bash
-cp .env.example .env.local   # completar con los datos del proyecto Firebase
+cp .env.example .env.local   # valores públicos; la config de Firebase sale de npm run env:desa
 npm install
 npm run dev                  # http://localhost:3000
 npm run lint && npm run typecheck
 npm run build                # genera /out (sitio estático)
-npm run deploy               # build + firebase deploy --only hosting:landing
+npm run deploy:desa          # lee la config de Firebase, build y deploy a desa
 ```
 
 Sin las variables de Firebase la página funciona igual: los formularios se simulan en la consola y el precio sale de `.env`.
 
-## Firebase: un solo panel
+## Firebase y ambientes
 
-Landing y app comparten el proyecto `lina-back`:
+Dos proyectos Firebase compartidos con la app: `unbarber-desa` (rama `develop`) y `unbarber-prd` (rama `main`). La landing es un sitio de Hosting adicional en cada uno (target `landing`); Firestore, reglas, Auth y Remote Config los administra el repo de la app. La config web no se versiona. Detalle, workflows y lo que hay que cargar en GitHub: [docs/infra.md](docs/infra.md).
 
-| Pieza | Quién la administra |
-|---|---|
-| Hosting `unbarber-landing` (target `landing`) | Este repo |
-| Hosting `unbarber-app` (target `app`) | Repo de la app |
-| `firestore.rules` e índices | Repo de la app. Las reglas de las colecciones de la landing están en `firestore.landing.rules` para copiarlas allá |
-| Remote Config | Consola de Firebase. La landing lee `membership_price_ars`, `membership_promo_percent` y `membership_promo_until` |
-| Auth, Functions, Storage, FCM | Repo de la app |
-
-Mercado Pago no está dentro de Firebase: el link de pago se maneja desde la app.
+La landing lee de Remote Config `membership_price_ars`, `membership_promo_percent` y `membership_promo_until`. Mercado Pago no está dentro de Firebase: el link de pago se maneja desde la app.
 
 ## Membresía
 
