@@ -44,7 +44,7 @@ Borrador de textos. Lo que está entre corchetes `[ ]` depende de una decisión 
 
 ### Preguntas frecuentes
 - **¿Cuánto cuesta?** (`id="faq-precio"`, se arma con Remote Config en `components/Membership.tsx`)
-  Registrarte no cuesta nada. Para aparecer en búsquedas y recibir alertas de clientes pagás una membresía de acceso de **$20.000, en un solo pago**. No es un abono mensual. Promoción de lanzamiento: hoy 100 % bonificada [hasta fecha]. Si la promoción cambia, lo vas a ver acá y te avisamos antes de cobrarte cualquier monto. Si no pagás la membresía, tu cuenta y tu perfil quedan guardados, pero dejás de recibir clientes.
+  Registrarte no cuesta nada. Para aparecer en búsquedas y recibir alertas de clientes pagás una membresía de acceso de **$20.000, en un solo pago**. No es un abono mensual. Promoción de lanzamiento: hoy 100 % bonificada [hasta fecha]. La promoción vale para quien se registra mientras está vigente: la conserva aunque después termine (decisión de Rodri, 20 nov 2026). Si no pagás la membresía, tu cuenta y tu perfil quedan guardados, pero dejás de recibir clientes.
 - **¿Cómo pago la membresía?** Con Mercado Pago. Recibís la factura por mail.
 - **¿Me puedo arrepentir?** Sí. Tenés 10 días corridos desde el pago para pedir la devolución desde [Botón de arrepentimiento](/arrepentimiento).
 - **¿Tengo que tener local?** [Pendiente: decisión sobre barberos a domicilio y sin local.]

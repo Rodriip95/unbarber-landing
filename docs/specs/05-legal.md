@@ -10,7 +10,7 @@ La campaña dice "Registrate gratis", y es cierto. Para que no induzca a error:
 - [ ] Debajo de cada botón "Registrate gratis" en `/barberos` hay una línea visible: "Registro y prueba sin cargo. Después, membresía de acceso de pago único." con enlace a la pregunta del precio.
 - [ ] La pregunta "¿Cuánto cuesta?" dice el **precio en pesos**, que es un **pago único**, qué incluye, cuánto dura la prueba y qué pasa si no se paga.
 - [ ] Con la promoción de Remote Config, se muestra **siempre el precio normal ($20.000)** y la promoción aparte, con su fecha de fin si la tiene.
-- [ ] Si la promo baja o termina, no se cobra a nadie sin aviso previo con el monto. Definir si el 100 % queda para quienes se registraron durante la promo.
+- [ ] La promo vale para quien se registra durante su vigencia y la conserva después (decisión de Rodri, 20 nov 2026). La app guarda en el usuario el % de promo vigente al registrarse.
 - [ ] Si hay membresía fundador, se dice cuántos lugares hay y el precio normal. Un contador de lugares solo se muestra si es real.
 - [ ] Los Términos tienen la cláusula de membresía, prueba y arrepentimiento (NEG-04).
 

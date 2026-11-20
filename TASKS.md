@@ -11,7 +11,7 @@ Estado: `[ ]` pendiente · `[~]` en curso · `[x]` hecha · `[!]` bloqueada (dic
 Sin esto no se puede publicar contenido final. El código puede avanzar con marcadores `[ ]`.
 
 - [x] **NEG-01** Precio de la membresía: $20.000, pago único, Mercado Pago, promo 100 % por Remote Config.
-- [ ] **LAN-31** Definir alcance de la promo (para quién vale y hasta cuándo). *P0, bloquea texto final de LAN-04.*
+- [x] **LAN-31** Alcance de la promo: vale para quien se registra mientras está vigente y la conserva.
 - [!] **NEG-02** Duración de la prueba (días o cantidad de clientes). *Bloquea LAN-04.*
 - [!] **MKT-01** Zona piloto y lista de barrios. *Bloquea LAN-02, LAN-06, LAN-09.*
 - [!] **NEG-03** Titular legal (persona o SAS) y CUIT. *Bloquea LAN-07.*

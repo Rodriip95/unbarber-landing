@@ -91,7 +91,7 @@ $20.000, pago único, por Mercado Pago. Hoy con promoción de 100 % que se contr
 
 ## Pendientes de Rodri que bloquean contenido
 
-- **Promo**: si el 100 % vale para quien se registra mientras dura o para quien paga mientras dura, y si tiene fecha de fin.
+- **Promo**: fecha de fin, si la tiene (vale para quien se registra mientras está vigente).
 - **Duración de la prueba** (NEG-02), si se mantiene además de la promo.
 - **Zona piloto** (MKT-01). Bloquea títulos, mapa y SEO.
 - **Titular legal** (NEG-03). Bloquea Términos, Privacidad y el pie de página.

@@ -103,7 +103,7 @@ Eventos de analítica: ver [04-tecnica.md](04-tecnica.md#analítica).
 |---|---|---|
 | Zona piloto | Rodri (MKT-01) | Títulos, mapa, SEO, barrios del formulario |
 | Precio de membresía | Resuelto: $20.000, pago único, promo 100 % por Remote Config | — |
-| Alcance de la promo (registro o pago, fecha de fin) | Rodri | Texto de la promo |
+| Alcance de la promo | Resuelto: vale para quien se registra durante la promo | — |
 | Duración de la prueba | Rodri (NEG-02) | FAQ y sección de membresía |
 | ¿Hay membresía fundador? | Rodri | Sección 5 de `/barberos` |
 | Fotos reales | Marketing (LAN-08) | Hero y "Por qué confiar" |

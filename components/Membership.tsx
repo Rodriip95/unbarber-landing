@@ -42,8 +42,9 @@ export function MembershipAnswer() {
       </p>
       {promo && <p className="text-ink">Promoción de lanzamiento: {promo}.</p>}
       <p>
-        Si la promoción cambia, lo vas a ver acá y te avisamos antes de cobrarte cualquier monto. Si no pagás la
-        membresía, tu cuenta y tu perfil quedan guardados, pero dejás de recibir clientes.
+        La promoción vale para quien se registra mientras está vigente: si te registrás ahora, la conservás aunque
+        después termine. Si la promoción cambia, lo vas a ver acá antes de registrarte. Si no tenés la membresía, tu
+        cuenta y tu perfil quedan guardados, pero no recibís clientes.
       </p>
     </div>
   );
