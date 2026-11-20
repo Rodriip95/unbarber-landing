@@ -1,0 +1,44 @@
+name: Deploy
+
+# develop → unbarber-desa · main → unbarber-prd (el ambiente `prd` pide aprobación).
+on:
+  push:
+    branches: [develop, main]
+
+concurrency:
+  group: deploy-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref_name == 'main' && 'prd' || 'desa' }}
+    env:
+      ALIAS: ${{ github.ref_name == 'main' && 'prd' || 'desa' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint && npm run typecheck
+      - uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+      - run: node scripts/firebase-env.mjs "$ALIAS"
+        env:
+          FIREBASE_WEB_APP_ID: ${{ vars.FIREBASE_WEB_APP_ID }}
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_SITE_URL: ${{ vars.SITE_URL }}
+          NEXT_PUBLIC_APP_URL: ${{ vars.APP_URL }}
+          NEXT_PUBLIC_REGISTRO_MODE: ${{ vars.REGISTRO_MODE }}
+          NEXT_PUBLIC_CLIENTES_MODE: ${{ vars.CLIENTES_MODE }}
+          NEXT_PUBLIC_ZONAS_ABIERTAS: ${{ vars.ZONAS_ABIERTAS }}
+          NEXT_PUBLIC_ZONA_PILOTO: ${{ vars.ZONA_PILOTO }}
+          NEXT_PUBLIC_TITULAR: ${{ vars.TITULAR }}
+          NEXT_PUBLIC_CUIT: ${{ vars.CUIT }}
+          NEXT_PUBLIC_RECAPTCHA_KEY: ${{ vars.RECAPTCHA_KEY }}
+          NEXT_PUBLIC_META_PIXEL_ID: ${{ vars.META_PIXEL_ID }}
+      - run: npx --yes firebase-tools deploy --only hosting:landing --project "$ALIAS" --non-interactive

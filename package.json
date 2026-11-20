@@ -8,7 +8,10 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
-    "deploy": "npm run build && firebase deploy --only hosting:landing"
+    "env:desa": "node scripts/firebase-env.mjs desa",
+    "env:prd": "node scripts/firebase-env.mjs prd",
+    "deploy:desa": "npm run env:desa && npm run build && firebase deploy --only hosting:landing --project desa",
+    "deploy:prd": "npm run env:prd && npm run build && firebase deploy --only hosting:landing --project prd"
   },
   "dependencies": {
     "firebase": "^11.10.0",

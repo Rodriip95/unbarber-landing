@@ -1,6 +1,10 @@
 {
-  "projects": { "default": "lina-back" },
+  "projects": {
+    "desa": "unbarber-desa",
+    "prd": "unbarber-prd"
+  },
   "targets": {
-    "lina-back": { "hosting": { "landing": ["unbarber-landing"] } }
+    "unbarber-desa": { "hosting": { "landing": ["unbarber-desa-landing"] } },
+    "unbarber-prd": { "hosting": { "landing": ["unbarber-prd-landing"] } }
   }
 }

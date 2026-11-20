@@ -135,6 +135,8 @@ Los UTM de la URL se guardan en `sessionStorage` y se pasan a la app en el link 
 
 ## Deploy
 
+Ambientes `desa` y `prd`, workflows y secretos: ver [../infra.md](../infra.md). Lo de abajo aplica a los dos.
+
 - `firebase.json` con `hosting.target = "landing"`, `public: "out"`, `cleanUrls: true`, cabeceras de caché largas para `/_next/static/**`.
 - Dominios: `unbarber.com.ar` y `www` (redirige a sin www) apuntando al sitio `landing`. `app.unbarber.com.ar` apunta al sitio de la app.
 - Canal de vista previa: `firebase hosting:channel:deploy preview` para revisar antes de publicar.
