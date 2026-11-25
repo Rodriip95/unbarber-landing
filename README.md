@@ -40,7 +40,7 @@ La landing es un proyecto **separado de la app**: tiene su propio código, su pr
 
 ## Diseño
 
-Se construye con la **V3** (25 nov 2026): fondo crema `#F5F2ED`, verde oscuro `#182D26`, terracota `#C4523A`, azul `#425E78`, esquinas redondeadas, botones píldora, títulos en DM Serif Text con itálica y texto en Space Grotesk, y fotos de barberías reales de CABA. Tono directo, con voseo, sin signos de exclamación.
+Se construye con la **V3** (25 nov 2026): fondo crema `#F5F2ED`, verde oscuro `#182D26`, terracota `#C4523A`, azul `#425E78`, esquinas redondeadas, botones píldora, títulos en DM Serif Text con itálica y texto en Space Grotesk, y espacios de foto (por ahora recuadros grises tipo skeleton). Tono directo, con voseo, sin signos de exclamación.
 
 En la landing, `/barberos` se pinta del lado rojo y `/` del lado azul, igual que los dos modos de la app.
 
