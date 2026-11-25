@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-import { Archivo_Black, Space_Grotesk } from "next/font/google";
+import { DM_Serif_Text, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/Footer";
 import { CookieBanner } from "@/components/CookieBanner";
 import { config } from "@/lib/config";
 
-const archivoBlack = Archivo_Black({ weight: "400", subsets: ["latin"], variable: "--font-archivo-black" });
+// DM Serif Text solo existe en peso 400 (regular e itálica). Los "semibold/bold" del diseño
+// se logran con el tamaño y el contraste, no con font-weight (evita negritas sintéticas).
+const dmSerif = DM_Serif_Text({
+  weight: "400",
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  variable: "--font-dm-serif",
+});
 const spaceGrotesk = Space_Grotesk({
   weight: ["400", "500", "700"],
   subsets: ["latin"],
@@ -14,14 +21,14 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL(config.siteUrl),
-  title: "Unbarber · Barberos cerca tuyo, hoy también domingos",
-  description: `Barberos verificados en ${config.zonaPiloto}. Cortate ahora o sacá turno.`,
+  title: "Unbarber · Tu barbero a la vuelta de la esquina",
+  description: "Unbarber conecta barberos con vecinos que buscan un corte. Cortate hoy o sacá turno desde el celu.",
   openGraph: { siteName: "Unbarber", locale: "es_AR", type: "website" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es-AR" className={`${archivoBlack.variable} ${spaceGrotesk.variable}`}>
+    <html lang="es-AR" className={`${dmSerif.variable} ${spaceGrotesk.variable}`}>
       <body className="min-h-screen">
         {children}
         <Footer />

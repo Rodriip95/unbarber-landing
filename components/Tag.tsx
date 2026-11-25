@@ -1,11 +1,12 @@
 import type { ReactNode } from "react";
 
-export function Tag({ children, className = "" }: { children: ReactNode; className?: string }) {
+/** Antetítulo de sección: versalitas chicas en terracota (o durazno sobre fondo oscuro). */
+export function Tag({ children, dark = false, className = "" }: { children: ReactNode; dark?: boolean; className?: string }) {
   return (
-    <span
-      className={`inline-block border-2 border-ink bg-white px-2 py-1 text-xs font-bold uppercase tracking-[0.08em] md:text-sm ${className}`}
+    <p
+      className={`text-[11px] font-bold uppercase tracking-[0.12em] md:text-xs ${dark ? "text-peach" : "text-red"} ${className}`}
     >
       {children}
-    </span>
+    </p>
   );
 }

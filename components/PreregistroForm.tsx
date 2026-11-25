@@ -4,7 +4,7 @@
 import { useState, type FormEvent } from "react";
 import Link from "next/link";
 import { buttonClass } from "./Button";
-import { Checkbox, Field } from "./Field";
+import { Checkbox, Field, formCardClass } from "./Field";
 import { config } from "@/lib/config";
 import { crearDocumento } from "@/lib/firebase";
 import { getUtm } from "@/lib/utm";
@@ -50,14 +50,14 @@ export function PreregistroForm() {
 
   if (estado === "ok") {
     return (
-      <p role="status" className="border-2 border-ink bg-white p-5 text-lg font-bold shadow-hard">
+      <p role="status" className="rounded-2xl border border-line bg-paper p-6 font-display text-2xl">
         Listo. Te escribimos por WhatsApp para terminar tu alta.
       </p>
     );
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="grid gap-4 border-2 border-ink bg-white p-5 shadow-hard md:max-w-xl">
+    <form onSubmit={onSubmit} noValidate className={formCardClass}>
       <Field id="nombre" name="nombre" label="Nombre" autoComplete="name" error={errors.nombre} />
       <Field id="whatsapp" name="whatsapp" label="WhatsApp" type="tel" autoComplete="tel" error={errors.whatsapp} />
       <Field id="barrio" name="barrio" label="Barrio donde cortás" error={errors.barrio} />
@@ -74,7 +74,7 @@ export function PreregistroForm() {
         .
       </Checkbox>
       {errors.envio && <p className="text-sm font-bold text-red">{errors.envio}</p>}
-      <button type="submit" disabled={estado === "enviando"} className={buttonClass("red")}>
+      <button type="submit" disabled={estado === "enviando"} className={`${buttonClass("solid")} justify-self-start px-8`}>
         {estado === "enviando" ? "Guardando" : "Quiero sumarme"}
       </button>
     </form>

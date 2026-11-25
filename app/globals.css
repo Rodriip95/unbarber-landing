@@ -1,55 +1,49 @@
 @import "tailwindcss";
 
-/* Tokens de la V2 "Poste" (docs/specs/03-diseno.md). No usar colores sueltos. */
+/* Tokens de la V3 (docs/specs/03-diseno.md). No usar colores sueltos. */
 @theme {
   --color-white: #ffffff;
-  --color-ink: #111111;
-  --color-red: #e0262b;
-  --color-blue: #1f49c7;
-  --color-red-soft: #fde7e7;
-  --color-blue-soft: #e6ecfb;
-  --color-gray: #f2f2f2;
-  --color-gray-text: #555555;
+  --color-cream: #f5f2ed;
+  --color-paper: #fbfaf7;
+  --color-ink: #182d26; /* verde oscuro: texto, fondos oscuros, botones */
+  --color-red: #c4523a; /* terracota: acento, itálicas sobre claro */
+  --color-blue: #425e78; /* azul: acento secundario */
+  --color-peach: #f2b48c; /* itálicas sobre fondo oscuro */
+  --color-sage: #c7cdc3; /* fondo de foto mientras carga */
+  --color-gray: #ebe6de;
+  --color-gray-text: #5b6560;
+  --color-line: #d9d4cb;
+  --color-line-dark: #3b4d46;
 
-  --font-display: var(--font-archivo-black), "Arial Black", sans-serif;
+  --font-display: var(--font-dm-serif), Georgia, serif;
   --font-sans: var(--font-space-grotesk), system-ui, sans-serif;
-
-  --radius-*: initial;
-  --shadow-hard: 4px 4px 0 0 #111111;
-  --shadow-hard-sm: 2px 2px 0 0 #111111;
 }
 
 @layer base {
-  * {
-    border-radius: 0;
-  }
   html {
     color-scheme: light;
+    scroll-behavior: smooth;
   }
   body {
-    background: var(--color-white);
+    background: var(--color-cream);
     color: var(--color-ink);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
   :focus-visible {
-    outline: 2px solid var(--color-ink);
-    outline-offset: 2px;
+    outline: 2px solid var(--color-red);
+    outline-offset: 3px;
+  }
+  /* Los títulos van en DM Serif Text; la itálica marca la parte emocional de la frase. */
+  .font-display em {
+    font-style: italic;
   }
 }
 
-/* Franja del poste: firma de la marca, solo como separador o en el logo. */
-.poste {
-  background: repeating-linear-gradient(
-    -45deg,
-    var(--color-red) 0 12px,
-    var(--color-white) 12px 24px,
-    var(--color-blue) 24px 36px,
-    var(--color-white) 36px 48px
-  );
-}
-
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   *,
   *::before,
   *::after {

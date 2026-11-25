@@ -13,7 +13,7 @@ export function StickyCta({ children }: { children: ReactNode }) {
   }, []);
   if (!show) return null;
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 border-t-2 border-ink bg-white p-3 md:hidden [&>a]:w-full">
+    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-cream/95 p-3 backdrop-blur md:hidden [&>a]:w-full">
       {children}
     </div>
   );

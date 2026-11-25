@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 import Link from "next/link";
 import { buttonClass } from "./Button";
-import { Checkbox, Field, inputClass } from "./Field";
+import { Checkbox, Field, formCardClass, inputClass } from "./Field";
 import { config } from "@/lib/config";
 import { crearDocumento } from "@/lib/firebase";
 import { getUtm } from "@/lib/utm";
@@ -58,17 +58,17 @@ export function WaitlistForm() {
 
   if (estado === "ok") {
     return (
-      <p role="status" className="border-2 border-ink bg-white p-5 text-lg font-bold shadow-hard">
+      <p role="status" className="rounded-2xl border border-line bg-paper p-6 font-display text-2xl">
         Listo. Te avisamos cuando abra en {barrioOk}.
       </p>
     );
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="grid gap-4 border-2 border-ink bg-white p-5 shadow-hard md:max-w-xl">
+    <form onSubmit={onSubmit} noValidate className={formCardClass}>
       <Field id="contacto" name="contacto" label="Email o WhatsApp" autoComplete="email" error={errors.contacto} />
       <div>
-        <label htmlFor="barrio" className="mb-1 block font-bold">
+        <label htmlFor="barrio" className="mb-1.5 block text-sm font-bold">
           Barrio
         </label>
         <select id="barrio" name="barrio" className={inputClass} defaultValue="" onChange={(e) => setOtro(e.target.value === "otro")}>
@@ -98,7 +98,7 @@ export function WaitlistForm() {
         .
       </Checkbox>
       {errors.envio && <p className="text-sm font-bold text-red">{errors.envio}</p>}
-      <button type="submit" disabled={estado === "enviando"} className={buttonClass("blue")}>
+      <button type="submit" disabled={estado === "enviando"} className={`${buttonClass("solid")} justify-self-start px-8`}>
         {estado === "enviando" ? "Guardando" : "Avisame"}
       </button>
     </form>

@@ -29,7 +29,7 @@ export function CookieBanner() {
         <div
           role="dialog"
           aria-label="Aviso de cookies"
-          className="fixed inset-x-0 bottom-0 z-50 border-t-2 border-ink bg-white p-4 md:inset-x-auto md:bottom-4 md:right-4 md:max-w-md md:border-2 md:shadow-hard"
+          className="fixed inset-x-0 bottom-0 z-50 border-t border-line bg-paper p-4 shadow-lg md:inset-x-auto md:bottom-4 md:right-4 md:max-w-md md:rounded-2xl md:border"
         >
           <p className="text-sm">
             Usamos cookies para medir de dónde llegan las visitas y mejorar la página. Ver la{" "}
@@ -39,10 +39,10 @@ export function CookieBanner() {
             .
           </p>
           <div className="mt-3 flex gap-3">
-            <button className={buttonClass("ink", "secondary")} onClick={() => setConsent("necessary")}>
+            <button className={buttonClass("outline-dark")} onClick={() => setConsent("necessary")}>
               Solo necesarias
             </button>
-            <button className={`${buttonClass("ink", "secondary")} bg-ink! text-white!`} onClick={() => setConsent("all")}>
+            <button className={buttonClass("solid")} onClick={() => setConsent("all")}>
               Aceptar
             </button>
           </div>

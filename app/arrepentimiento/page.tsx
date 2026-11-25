@@ -7,9 +7,11 @@ export const metadata: Metadata = { title: "Botón de arrepentimiento · Unbarbe
 export default function Arrepentimiento() {
   return (
     <>
-      <Header link={{ href: "/barberos", label: "¿Sos barbero?" }} />
+      <Header />
       <main className="mx-auto max-w-3xl px-4 py-12">
-        <h1 className="font-display text-4xl uppercase leading-none md:text-5xl">Botón de arrepentimiento</h1>
+        <h1 className="font-display text-4xl leading-none md:text-6xl">
+          Botón de <em className="text-red">arrepentimiento</em>
+        </h1>
         <p className="mt-4 text-lg">
           Si pagaste la membresía hace 10 días corridos o menos, podés pedir la devolución. No hace falta explicar el
           motivo ni iniciar sesión.
