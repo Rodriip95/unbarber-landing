@@ -6,7 +6,8 @@ import { config } from "@/lib/config";
 
 export const barberos = {
   hero: {
-    title: "Clientes de tu zona, cuando vos estás disponible.",
+    title: "Clientes de tu zona,",
+    accent: "cuando vos estás disponible.",
     subtitle:
       "Activás “Disponible ahora” y te llegan pedidos de gente que está cerca. Turnos, agenda y tus clientes en un solo lugar.",
   },
@@ -16,8 +17,8 @@ export const barberos = {
     { title: "Recibís solicitudes", text: "Aceptás o pasás. Coordinás por WhatsApp." },
   ],
   beneficios: [
-    { emoji: "✂️", title: "Clientes nuevos en tus horarios libres", text: "Los domingos y los huecos de la tarde también cuentan." },
-    { emoji: "📅", title: "Agenda", text: "Los turnos de la app, los de AHORA y los que cargás a mano, en un mismo lugar." },
+    { title: "Horarios libres", text: "Clientes nuevos los domingos y en los huecos de la tarde." },
+    { title: "Agenda", text: "Los turnos de la app, los de AHORA y los que cargás a mano, en un mismo lugar." },
     { title: "Mis Clientes", text: "Quién vino, cuándo y qué se hizo." },
     { title: "Reputación", text: "Las calificaciones te siguen y te diferencian." },
   ] satisfies Feature[],
@@ -36,5 +37,5 @@ export const barberos = {
     { q: "¿Qué pasa si un cliente no viene?", a: "Lo calificás y queda en su reputación. Los demás barberos lo ven." },
     { q: "¿Dónde funciona?", a: `Por ahora en ${config.zonaPiloto}. Después sumamos más barrios.` },
   ] satisfies Faq[],
-  cierre: "Tu próximo cliente está a pocas cuadras.",
+  cierre: { title: "Tu próximo cliente", accent: "está a pocas cuadras." },
 };

@@ -1,28 +1,39 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
 
-export function Logo() {
+export function Logo({ light = false, className = "h-7 w-auto" }: { light?: boolean; className?: string }) {
   return (
-    <Link href="/" className="flex items-center gap-2" aria-label="Unbarber, inicio">
-      <span className="poste block h-8 w-3 border-2 border-ink" aria-hidden="true" />
-      <span className="font-display text-xl uppercase tracking-tight">Unbarber</span>
+    <Link href="/" className="inline-flex items-center" aria-label="Unbarber, inicio">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={light ? "/brand/logo-unbarber-claro.svg" : "/brand/logo-unbarber.svg"}
+        alt="unbarber"
+        width={350}
+        height={80}
+        className={className}
+      />
     </Link>
   );
 }
 
-export function Header({ link, action }: { link: { href: string; label: string }; action?: ReactNode }) {
+const nav = [
+  { href: "/#sobre", label: "La app" },
+  { href: "/barberos", label: "Para barberos" },
+  { href: "/#clientes", label: "Para clientes" },
+];
+
+export function Header() {
   return (
-    <header className="border-b-2 border-ink bg-white">
-      <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-4 px-4 py-3">
+    <header className="bg-cream">
+      <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-4 px-4 py-4 md:px-10">
         <Logo />
-        <nav className="flex items-center gap-4">
-          <Link href={link.href} className="text-sm font-bold underline underline-offset-4">
-            {link.label}
-          </Link>
-          {action}
+        <nav aria-label="Principal" className="flex items-center gap-4 text-xs font-bold md:gap-7 md:text-sm">
+          {nav.map((n, i) => (
+            <Link key={n.href} href={n.href} className={`hover:text-red ${i === 0 ? "hidden sm:inline" : ""}`}>
+              {n.label}
+            </Link>
+          ))}
         </nav>
       </div>
-      <div className="poste h-2 border-t-2 border-ink" aria-hidden="true" />
     </header>
   );
 }

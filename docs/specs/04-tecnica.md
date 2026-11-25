@@ -6,7 +6,7 @@
 |---|---|---|
 | Framework | Next.js (App Router) + TypeScript | Mismo stack que la app; se comparten tokens y criterios |
 | Render | Exportación estática (`output: 'export'`) | Sin servidor, carga rápida, hosting gratis |
-| Estilos | Tailwind CSS con los tokens de V2 | Rápido y consistente |
+| Estilos | Tailwind CSS con los tokens de V3 | Rápido y consistente |
 | Hosting | Firebase Hosting, sitio `landing` en el mismo proyecto de Firebase que la app | Gratis, SSL incluido, un solo panel |
 | Alternativa | Cloudflare Pages | Si Firebase Hosting queda corto. Vercel gratis no permite uso comercial |
 | Datos | Firestore (lista de espera y pre-registros), escritura desde el navegador | Gratis dentro de la cuota; no hace falta Cloud Functions |

@@ -40,7 +40,7 @@ La landing es un proyecto **separado de la app**: tiene su propio código, su pr
 
 ## Diseño
 
-Se construye con la **V2 "Poste"**: base blanca, rojo `#E0262B` (barberos), azul `#1F49C7` (clientes), tinta `#111111`, bordes negros de 2 px sin esquinas redondeadas, sombras duras de 4 px, títulos en Archivo Black y texto en Space Grotesk. Tono directo, con voseo, sin signos de exclamación. Emojis de barbería solo en etiquetas, nunca en precios ni textos legales.
+Se construye con la **V3** (25 nov 2026): fondo crema `#F5F2ED`, verde oscuro `#182D26`, terracota `#C4523A`, azul `#425E78`, esquinas redondeadas, botones píldora, títulos en DM Serif Text con itálica y texto en Space Grotesk, y fotos de barberías reales de CABA. Tono directo, con voseo, sin signos de exclamación.
 
 En la landing, `/barberos` se pinta del lado rojo y `/` del lado azul, igual que los dos modos de la app.
 
@@ -50,13 +50,13 @@ En la landing, `/barberos` se pinta del lado rojo y `/` del lado azul, igual que
 |---|---|
 | [docs/specs/01-producto.md](docs/specs/01-producto.md) | Objetivos, públicos, páginas, flujos y métricas |
 | [docs/specs/02-contenido.md](docs/specs/02-contenido.md) | Textos sección por sección y preguntas frecuentes (incluida la membresía) |
-| [docs/specs/03-diseno.md](docs/specs/03-diseno.md) | Tokens V2, componentes y reglas visuales |
+| [docs/specs/03-diseno.md](docs/specs/03-diseno.md) | Tokens V3, componentes, fotos y reglas visuales |
 | [docs/specs/04-tecnica.md](docs/specs/04-tecnica.md) | Arquitectura, estructura del código, datos, analítica, SEO y deploy |
 | [docs/specs/05-legal.md](docs/specs/05-legal.md) | Membresía informada, Términos, Privacidad, arrepentimiento y cookies |
 | [TASKS.md](TASKS.md) | Tareas por fase, con IDs `LAN-xx` y criterio de terminado |
 | `firestore.landing.rules` | Reglas de las colecciones de la landing, para sumar a las de la app |
 
-Fuentes de verdad: el [documento maestro](https://claude.ai/artifact/3Eh5NFbbXimfRb5U681k55) (pestañas Landing, Diseño, Marketing, Negocio y Decisiones técnicas) y la [propuesta de diseño](https://claude.ai/artifact/UJRTduMd8tdekdXRPW1jTW) (página V2 · Poste). Si algo de acá contradice al documento maestro, gana el documento maestro y se actualiza este repo.
+Fuentes de verdad: el [documento maestro](https://claude.ai/artifact/3Eh5NFbbXimfRb5U681k55) (pestañas Landing, Diseño, Marketing, Negocio y Decisiones técnicas) y la referencia de diseño V3 ("Landing principal"). Si algo de acá contradice al documento maestro, gana el documento maestro y se actualiza este repo.
 
 ## Cómo correrlo
 

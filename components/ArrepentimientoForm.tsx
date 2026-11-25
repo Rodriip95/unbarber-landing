@@ -3,7 +3,7 @@
 // Botón de arrepentimiento (Res. 424/2020): sin login, devuelve un código de trámite.
 import { useState, type FormEvent } from "react";
 import { buttonClass } from "./Button";
-import { Field, inputClass } from "./Field";
+import { Field, formCardClass, inputClass } from "./Field";
 import { crearDocumento } from "@/lib/firebase";
 
 type Errors = Partial<Record<"nombre" | "contacto" | "fecha_pago" | "envio", string>>;
@@ -50,8 +50,8 @@ export function ArrepentimientoForm() {
 
   if (codigo) {
     return (
-      <div role="status" className="border-2 border-ink bg-white p-5 shadow-hard">
-        <p className="text-lg font-bold">Recibimos tu pedido de arrepentimiento.</p>
+      <div role="status" className="rounded-2xl border border-line bg-paper p-6">
+        <p className="font-display text-2xl">Recibimos tu pedido de arrepentimiento.</p>
         <p className="mt-2">
           Tu código de trámite es <strong className="font-display text-2xl">{codigo}</strong>. Guardalo. Te
           contactamos dentro de las 24 horas para devolverte el pago.
@@ -61,18 +61,18 @@ export function ArrepentimientoForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="grid gap-4 border-2 border-ink bg-white p-5 shadow-hard md:max-w-xl">
+    <form onSubmit={onSubmit} noValidate className={`${formCardClass} md:max-w-xl`}>
       <Field id="nombre" name="nombre" label="Nombre y apellido" autoComplete="name" error={errors.nombre} />
       <Field id="contacto" name="contacto" label="Email o WhatsApp con el que pagaste" error={errors.contacto} />
       <Field id="fecha_pago" name="fecha_pago" label="Fecha de pago" type="date" error={errors.fecha_pago} />
       <div>
-        <label htmlFor="detalle" className="mb-1 block font-bold">
+        <label htmlFor="detalle" className="mb-1.5 block text-sm font-bold">
           Comentario (opcional)
         </label>
         <textarea id="detalle" name="detalle" maxLength={500} rows={3} className={inputClass} />
       </div>
       {errors.envio && <p className="text-sm font-bold text-red">{errors.envio}</p>}
-      <button type="submit" disabled={enviando} className={buttonClass("ink")}>
+      <button type="submit" disabled={enviando} className={`${buttonClass("solid")} justify-self-start px-8`}>
         {enviando ? "Enviando" : "Me arrepiento de la compra"}
       </button>
     </form>
